@@ -81,13 +81,13 @@ flutter:
   fonts:
      - family: CircularStd
        fonts:
-         - asset: fonts/CircularStd-Black.ttf
+         - asset: assets/fonts/CircularStd-Black.ttf
            weight: 800
-         - asset: fonts/CircularStd-Bold.ttf
+         - asset: assets/fonts/CircularStd-Bold.ttf
            weight: 700
-         - asset: fonts/CircularStd-Medium.ttf
+         - asset: assets/fonts/CircularStd-Medium.ttf
            weight: 500
-         - asset: fonts/CircularStd-Regular.ttf
+         - asset: assets/fonts/CircularStd-Regular.ttf
            weight: 400
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

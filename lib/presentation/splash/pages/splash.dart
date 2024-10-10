@@ -16,7 +16,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
-      customNavigation(context, RoutesPath.signinRoute);
+      customReplacementNavigate(context, RoutesPath.signinRoute);
     });
     super.initState();
   }
