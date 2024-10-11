@@ -1,14 +1,16 @@
 import 'package:e_commerce_mobile_app/core/configs/theme/app_theme.dart';
 import 'package:e_commerce_mobile_app/core/router/app_router.dart';
 import 'package:e_commerce_mobile_app/firebase_options.dart';
+import 'package:e_commerce_mobile_app/service_locator.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
+  await initializeDependancies();
   runApp(const MyApp());
 }
 
