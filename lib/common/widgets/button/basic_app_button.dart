@@ -1,3 +1,4 @@
+import 'package:e_commerce_mobile_app/core/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class BasicAppButton extends StatelessWidget {
@@ -6,13 +7,14 @@ class BasicAppButton extends StatelessWidget {
   final Widget ? content;
   final double ? height;
   final double ? width;
+  final Color? backgroundColor;
   const BasicAppButton({
     required this.onPressed,
     this.title = '',
     this.height,
     this.width,
     this.content,
-    super.key
+    super.key, this.backgroundColor
   });
 
   @override
@@ -20,6 +22,7 @@ class BasicAppButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        backgroundColor: backgroundColor??AppColors.primary,
         minimumSize: Size(
           width ?? MediaQuery.of(context).size.width,
           height ?? 50

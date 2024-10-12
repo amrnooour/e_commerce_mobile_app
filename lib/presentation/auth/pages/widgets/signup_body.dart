@@ -45,7 +45,9 @@ class SignupBody extends StatelessWidget {
             height: 16,
           ),
           BasicAppButton(
-            onPressed: () {},
+            onPressed: () {
+              customNavigation(context, RoutesPath.genderAndAgeSelection);
+            },
             title: "Continue",
           ),
           const SizedBox(

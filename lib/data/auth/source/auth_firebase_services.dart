@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthFirebaseServices {
   Future<Either> signup(UserCreationReq user);
+  Future<Either> getAges();
 }
 
 class AuthFirebaseServicesImpl extends AuthFirebaseServices {
@@ -36,7 +37,16 @@ class AuthFirebaseServicesImpl extends AuthFirebaseServices {
         message = 'The account already exists for that email.';
       }
       return left(message);
-    } 
     }
   }
 
+  @override
+  Future<Either> getAges() async {
+    try {
+      var data = await FirebaseFirestore.instance.collection("ages").get();
+      return right(data.docs);
+    } catch (e) {
+      return left("please try again");
+    }
+  }
+}

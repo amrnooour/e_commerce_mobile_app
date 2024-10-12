@@ -3,4 +3,6 @@ class RoutesPath {
   static const enterPasswordRoute = "/enterPassword";
   static const forgotPasswordRoute = "/forgotPassword";
   static const signupRoute = "/signup";
+  static const genderAndAgeSelection = "/genderAndAgeSelection";
+
 }

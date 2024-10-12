@@ -9,4 +9,9 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either> signup(UserCreationReq user) {
     return sl<AuthFirebaseServices>().signup(user);
   }
+
+  @override
+  Future<Either> getAges() async{
+    return sl<AuthFirebaseServices>().getAges();
+  }
 }
