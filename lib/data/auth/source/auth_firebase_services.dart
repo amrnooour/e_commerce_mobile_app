@@ -1,14 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_mobile_app/data/auth/models/user_creation_req.dart';
+import 'package:e_commerce_mobile_app/data/auth/models/user_signin_req.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class AuthFirebaseServices {
   Future<Either> signup(UserCreationReq user);
+  Future<Either> signin(UserSigninReq user);
   Future<Either> getAges();
 }
 
 class AuthFirebaseServicesImpl extends AuthFirebaseServices {
+  String message = '';
   @override
   Future<Either> signup(UserCreationReq user) async {
     try {
@@ -30,7 +33,6 @@ class AuthFirebaseServicesImpl extends AuthFirebaseServices {
 
       return right("success sign in");
     } on FirebaseAuthException catch (e) {
-      String message = "";
       if (e.code == 'weak-password') {
         message = 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
@@ -47,6 +49,22 @@ class AuthFirebaseServicesImpl extends AuthFirebaseServices {
       return right(data.docs);
     } catch (e) {
       return left("please try again");
+    }
+  }
+
+  @override
+  Future<Either> signin(UserSigninReq user) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: user.email!, password: user.password!);
+      return right("Sign in Successfly");
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        message = 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        message = 'Wrong password provided for that user.';
+      }
+      return left(message);
     }
   }
 }

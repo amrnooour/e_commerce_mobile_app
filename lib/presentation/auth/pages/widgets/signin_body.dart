@@ -1,7 +1,9 @@
 import 'package:e_commerce_mobile_app/common/widgets/button/basic_app_button.dart';
 import 'package:e_commerce_mobile_app/core/constants.dart/routes_path.dart';
 import 'package:e_commerce_mobile_app/core/router/navigation.dart';
+import 'package:e_commerce_mobile_app/presentation/auth/bloc/signin_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SigninBody extends StatelessWidget {
   const SigninBody({super.key});
@@ -23,8 +25,9 @@ class SigninBody extends StatelessWidget {
           const SizedBox(
             height: 32,
           ),
-          const TextField(
-            decoration: InputDecoration(hintText: "Email Address"),
+          TextField(
+            controller: context.read<SigninCubit>().email,
+            decoration: const InputDecoration(hintText: "Email Address"),
           ),
           const SizedBox(
             height: 16,
