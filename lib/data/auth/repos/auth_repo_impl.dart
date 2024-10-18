@@ -18,6 +18,11 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either> signin(UserSigninReq user) {
-   return sl<AuthFirebaseServices>().signin(user);
+    return sl<AuthFirebaseServices>().signin(user);
+  }
+
+  @override
+  Future<Either> resetPassword(String email) {
+    return sl<AuthFirebaseServices>().resetPassword(email);
   }
 }
