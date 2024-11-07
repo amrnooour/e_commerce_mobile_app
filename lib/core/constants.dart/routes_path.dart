@@ -1,3 +1,4 @@
+
 class RoutesPath {
   static const signinRoute = "/signin";
   static const enterPasswordRoute = "/enterPassword";
@@ -5,6 +6,8 @@ class RoutesPath {
   static const signupRoute = "/signup";
   static const genderAndAgeSelection = "/genderAndAgeSelection";
   static const passwordReserEmail = "/passwordReserEmail";
+  static const home = "/home";
+
 
 
 }

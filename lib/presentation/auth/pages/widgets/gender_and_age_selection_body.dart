@@ -1,5 +1,7 @@
 import 'package:e_commerce_mobile_app/common/helper/bottom_sheet/app_bottom_sheet.dart';
 import 'package:e_commerce_mobile_app/common/widgets/button/basic_app_button.dart';
+import 'package:e_commerce_mobile_app/core/constants.dart/routes_path.dart';
+import 'package:e_commerce_mobile_app/core/router/navigation.dart';
 import 'package:e_commerce_mobile_app/presentation/auth/bloc/age_selection_cubit.dart';
 import 'package:e_commerce_mobile_app/presentation/auth/bloc/ages_display_cubit.dart';
 import 'package:e_commerce_mobile_app/presentation/auth/bloc/signup_cubit.dart';
@@ -21,6 +23,7 @@ class GenderAndAgeSelectionBody extends StatelessWidget {
       child: BlocConsumer<SignupCubit, SignupStates>(
         listener: (context, state) {
           if (state is SignupSuccess) {
+            customReplacementNavigate(context, RoutesPath.home);
             const Text("Success");
           } else if (state is SignupFailure) {
             var snackbar = SnackBar(

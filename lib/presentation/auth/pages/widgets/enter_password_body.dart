@@ -14,9 +14,10 @@ class EnterPasswordBody extends StatelessWidget {
     SigninCubit cubit = context.read();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 23),
-      child: BlocConsumer<SigninCubit,SigninStates>(
+      child: BlocConsumer<SigninCubit, SigninStates>(
         listener: (context, state) {
           if (state is SigninSuccess) {
+            customReplacementNavigate(context, RoutesPath.home);
             var snackbar = const SnackBar(
               content: Text("success"),
               behavior: SnackBarBehavior.floating,
@@ -49,13 +50,16 @@ class EnterPasswordBody extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              state is SigninLoading?
-              const Center(child: CircularProgressIndicator(),) :BasicAppButton(
-                onPressed: () {
-                  cubit.signin();
-                },
-                title: "Continue",
-              ),
+              state is SigninLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : BasicAppButton(
+                      onPressed: () {
+                        cubit.signin();
+                      },
+                      title: "Continue",
+                    ),
               const SizedBox(
                 height: 16,
               ),
